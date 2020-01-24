@@ -8,7 +8,7 @@ body {
 .header-wrapper {
   width: 100%;
   height: 80px;
-  background-color: rgb(66, 66, 255);
+  background-color: #575d62;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,11 +22,16 @@ body {
 .content-wrapper {
   padding: 20px;
   height: 100%;
-  background-color: tomato;
 }
 
 .content-container {
+  display: flex;
   width: 100%;
   height: 100px;
-  background-color: turquoise;
+  background-color: lightgray;
+}
+
+.question-list {
+  padding: 20px;
+  margin: 16px;
 }
