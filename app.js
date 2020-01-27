@@ -14,16 +14,13 @@ function ajaxCall(command, callback){
 
 function createList(data){
     let list = document.getElementsByClassName('question-list');
-    console.log(list);
-    // document.querySelector('body').appendChild(list[0]);
     for (let i = 0; i<data.length; i++){
         let postElements =`<div class="question-container">
                                 <span class="question">${data[i].question}</span>
                                 <span class="date">(${moment.unix(data[i].created_at).format("YYYY/MM/DD HH:mm")})</span>
                             </div>
-                            <div class="answer">
-                                ${data[i].answer}
-                            </div>`;
+                            <textarea class="answer" rows="4" cols="50">${data[i].answer}
+                            </textarea>`;
         let bookDatas = document.createElement('li');
         bookDatas.className = 'question-list-element';
         bookDatas.innerHTML = postElements;

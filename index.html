@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Questionnaire Editor from Balázs Prjevara</title>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"></script>
     <script src="https://rawgithub.com/timrwood/moment/2.9.0/min/moment.min.js"></script>
     <link rel="stylesheet" href="/main.css">
 </head>
@@ -19,6 +19,13 @@
             <div class="content-container">
                 <ul class="question-list">
                 </ul>
+            </div>
+            <div class="new-question-container">
+                <span>Add new question</span>
+                <div class="new-question">
+                    <input type="text" name="newQuestion" id="new-question-input">
+                    <button id="add-new">Add</button>
+                </div>
             </div>
         </div>
     </main>

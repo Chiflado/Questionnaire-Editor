@@ -25,6 +25,21 @@ body {
   margin: 20px;
 }
 
+.new-question-container {
+  padding-left: 20px;
+  width: 50%;
+}
+
+.new-question {
+  display: flex;
+  width: 100%;
+}
+
+#new-question-input {
+  margin-right: 10px;
+  width: 50%;
+}
+
 .content-container {
   width: 100%;
 }
@@ -47,5 +62,4 @@ body {
 
 .answer {
   font-size: 14px;
-  height: 20px;
 }
