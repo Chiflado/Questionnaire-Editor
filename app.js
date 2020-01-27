@@ -12,8 +12,9 @@ function ajaxCall(command, callback){
     xhr.send();
 };
 
-function createList(data){
-    let list = document.getElementsByClassName('question-list');
+let list = document.getElementsByClassName('question-list')[0];
+
+function createList(data) {
     for (let i = 0; i<data.length; i++){
         let postElements =`<div class="question-container">
                                 <span class="question">${data[i].question}</span>
@@ -21,16 +22,31 @@ function createList(data){
                             </div>
                             <textarea class="answer" rows="4" cols="50">${data[i].answer}
                             </textarea>`;
-        let bookDatas = document.createElement('li');
-        bookDatas.className = 'question-list-element';
-        bookDatas.innerHTML = postElements;
-        list[0].appendChild(bookDatas);
+        let questions = document.createElement('li');
+        questions.className = 'question-list-element';
+        questions.innerHTML = postElements;
+        list.appendChild(questions);
     }
 }
 
-function handleData(data){
-    console.log(data);
-}
+let addButton = document.querySelector('#add-new');
+let newQuestion = document.getElementsByName('newQuestion');
 
-ajaxCall('GET', handleData);
+addButton.addEventListener('click',function(event){
+    if (!newQuestion[0].value || newQuestion[0].value.length < 1) {
+        alert('Please add a new question!');
+    } else {
+        let postElements =`<div class="question-container">
+                                <span class="question">${newQuestion[0].value}</span>
+                                <span class="date">(${moment().format("YYYY/MM/DD HH:mm")})</span>
+                            </div>
+                            <textarea class="answer" rows="4" cols="50"></textarea>`;
+        let questions = document.createElement('li');
+        questions.className = 'question-list-element';
+        questions.innerHTML = postElements;
+        list.appendChild(questions);
+        newQuestion[0].value = '';
+    }
+});
+
 ajaxCall('GET', createList);
