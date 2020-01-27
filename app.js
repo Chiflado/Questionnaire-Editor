@@ -18,7 +18,7 @@ function createList(data) {
     for (let i = 0; i<data.length; i++){
         let postElements =`<div class="question-container">
                                 <span class="question">${data[i].question}</span>
-                                <span class="date">(${moment.unix(data[i].created_at).format("YYYY/MM/DD HH:mm")})</span>
+                                <span class="date">(${getFormattedDate(new Date(data[i].created_at * 1000))})</span>
                             </div>
                             <textarea class="answer" rows="4" cols="50">${data[i].answer}
                             </textarea>`;
@@ -39,7 +39,7 @@ addButton.addEventListener('click',function(event){
     } else {
         let postElements =`<div class="question-container">
                                 <span class="question">${newQuestion[0].value}</span>
-                                <span class="date">(${moment().format("YYYY/MM/DD HH:mm")})</span>
+                                <span class="date">(${getFormattedDate(new Date)})</span>
                             </div>
                             <textarea class="answer" rows="4" cols="50">${newQuestionAnswer[0].value}</textarea>`;
         let questions = document.createElement('li');
@@ -50,5 +50,16 @@ addButton.addEventListener('click',function(event){
         newQuestionAnswer[0].value = '';
     }
 });
+
+function getFormattedDate(date) {
+    let formettedDate = `${
+        date.getFullYear().toString().padStart(4, '0')}/${
+        (date.getMonth()+1).toString().padStart(2, '0')}/${
+        date.getDate().toString().padStart(2, '0')} ${
+        date.getHours().toString().padStart(2, '0')}:${
+        date.getMinutes().toString().padStart(2, '0')}:${
+        date.getSeconds().toString().padStart(2, '0')}`;
+    return formettedDate;        
+}
 
 ajaxCall('GET', createList);
