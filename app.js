@@ -31,6 +31,7 @@ function createList(data) {
 
 let addButton = document.querySelector('#add-new');
 let newQuestion = document.getElementsByName('newQuestion');
+let newQuestionAnswer = document.getElementsByName('newQuestionAnswer');
 
 addButton.addEventListener('click',function(event){
     if (!newQuestion[0].value || newQuestion[0].value.length < 1) {
@@ -40,12 +41,13 @@ addButton.addEventListener('click',function(event){
                                 <span class="question">${newQuestion[0].value}</span>
                                 <span class="date">(${moment().format("YYYY/MM/DD HH:mm")})</span>
                             </div>
-                            <textarea class="answer" rows="4" cols="50"></textarea>`;
+                            <textarea class="answer" rows="4" cols="50">${newQuestionAnswer[0].value}</textarea>`;
         let questions = document.createElement('li');
         questions.className = 'question-list-element';
         questions.innerHTML = postElements;
         list.appendChild(questions);
         newQuestion[0].value = '';
+        newQuestionAnswer[0].value = '';
     }
 });
 
